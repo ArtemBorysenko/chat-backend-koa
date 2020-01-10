@@ -1,0 +1,19 @@
+import { listen } from "socket.io"
+import http from 'http';
+
+//TODO Socket.io ...
+export default (http: http.Server) => {
+    const io = listen(http);
+
+    io.on('connection', function(socket: any) {
+        socket.on('DIALOGS:JOIN', (dialogId: string) => {
+            socket.dialogId = dialogId;
+            socket.join(dialogId);
+        });
+        socket.on('DIALOGS:TYPING', (obj: any) => {
+            socket.broadcast.emit('DIALOGS:TYPING', obj);
+        });
+    });
+
+    return io;
+};

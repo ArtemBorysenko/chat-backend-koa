@@ -1,0 +1,1 @@
+export { default as UserModel_v2 } from "./User";

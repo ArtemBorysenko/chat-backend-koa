@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
+import config from "../config"
 import { reduce } from 'lodash';
-import { IUser } from '../models/v1/User';
 
 interface ILoginData {
     email: string;
@@ -16,14 +16,16 @@ export default (user: ILoginData) => {
                     if (key !== 'password') {
                         result[key] = value;
                     }
+                    //TODO Access token
+                    console.log("JWT result :", result)
                     return result;
                 },
                 {},
             ),
         },
-        process.env.JWT_SECRET || '',
+        config.secret || '',
         {
-            expiresIn: process.env.JWT_MAX_AGE,
+            expiresIn: config.jwt_time,
             algorithm: 'HS256',
         },
     );

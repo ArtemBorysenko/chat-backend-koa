@@ -46,15 +46,17 @@ const UserSchema = new Schema(
     },
 );
 
-UserSchema.virtual('isOnline').get(function(this: any) {
-    return datefns.differenceInMinutes(new Date(), this.last_seen) < 5;
-});
+//TODO  date-fns differenceInMinutes
+
+// UserSchema.virtual('isOnline').get(function(this: any) {
+//     return datefns.differenceInMinutes(new Date(), this.last_seen) < 5;
+// });
 
 UserSchema.set('toJSON', {
     virtuals: true,
 });
 
-UserSchema.pre('save', async function(next : any) {
+UserSchema.pre('save', async function(next : any) { // Mongoose middleware
     const user: any = this;
 
     if (!user.isModified('password')) {

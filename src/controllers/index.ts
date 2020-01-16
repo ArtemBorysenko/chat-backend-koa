@@ -1,1 +1,3 @@
-export { DialogCtrl, UserCtrl, UploadFileCtrl, MessageCtrl } from "./v1"
+export * from "./v1"
+// TODO './v1' UserCtrl
+export * from "./v2"

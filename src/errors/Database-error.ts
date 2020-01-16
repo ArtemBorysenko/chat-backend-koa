@@ -1,3 +1,5 @@
+import MessageController from "../controllers/v1/MessageController";
+
 class DatabaseError extends Error {
     status: number
     errors: { title: string, msg: string | undefined }[]
@@ -15,4 +17,4 @@ class DatabaseError extends Error {
     }
 }
 
-module.exports = DatabaseError
+export default  DatabaseError

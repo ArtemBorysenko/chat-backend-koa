@@ -6,49 +6,74 @@ import json from "koa-json"
 import { createServer } from 'http'
 //TODO JWT
 
-const config = require('./config.ts')
+import  config  from './config'
 
 import './core/database/mongo-connection';
 import index from './core/routes';
 import createSocket from './core/socket'
+import koaBody from "koa-body";
 
-// function CreateApp() { // ? App ?
+function CreateApp() { // ? App ?
     const app = new Koa()
     const router = new Router()
 
-    router.get("/", async (ctx: Koa.Context, next: Koa.Next ) => {
+    // TODO Socket
+    const http = createServer(app.callback())
+    const io = createSocket(http)
+
+    app.use(koaBody())
+    app.use(logger())
+    // app.use(json())
+
+    router.use(async ( ctx: Koa.Context, next: Koa.Next ) => {
+        try {
+            //TODO ERROR HANDLING
+            // validation > routes > controllers
+            await next()
+        } catch (err) {
+            console.log("1")
+            ctx.status = err.status || 500
+            ctx.body = err.message
+           // ctx.app.emit('error', err, ctx)
+        }
+    });
+
+    router.get("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
         ctx.status = 200
         ctx.body = { msg: "Hello world!" }
-
-        await next()
     })
 
-    router.get("/echo", async (ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/echo", async ( ctx: Koa.Context, next: Koa.Next ) => {
         ctx.status = 200
         ctx.body = { Server: "Online" }
     })
 
-    router.get("/status", async (ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/status", async ( ctx: Koa.Context, next: Koa.Next ) => {
         ctx.status = 200
         ctx.body = { Status: "Online" } // ?
     })
 
-    // router.use("", index.routes())
-    app.use(router.allowedMethods());
-    app.use(router.routes());
+    router.use("", index(io).routes())
 
-//     return app
-// }
+    app.on('error', (err, ctx) => {
+        /* centralized error handling:
+         *   console.log error
+         *   write error to log file
+         *   save error and request information to database if ctx.request match condition
+         *   ...
+        */
+    })
 
-// TODO Socket
-const http = createServer(app.callback())
-const io = createSocket(http)
-index(io)
+    app.use(router.allowedMethods()).use(router.routes())
+
+    return app
+}
+
 
 if (!module.parent) {
-    app.listen(config.port, () => {
+    CreateApp().listen(config.port, () => {
         console.log("Koa started")
     })
 }
 
-export default app
+export default CreateApp

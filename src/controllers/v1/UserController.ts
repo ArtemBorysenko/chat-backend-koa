@@ -1,4 +1,5 @@
 import express from 'express';
+import Koa from "koa"
 import { compareSync } from 'bcrypt';
 import socket from 'socket.io';
 import { validationResult } from 'express-validator';
@@ -15,29 +16,38 @@ class UserController {
         this.io = io;
     }
 
-    show = (req: express.Request, res: express.Response) => {
-        const id: string = req.params.id;
-        UserModel.findById(id, (err, user) => {
-            if (err) {
-                return res.status(404).json({
-                    message: 'User not found'
-                });
-            }
-            res.json(user);
-        });
-    };
+    show = async (ctx: Koa.Context) => {
+        try {
+            const id: string = ctx.params.id // express req.params.id
+            const user = await UserModel.findById(id)
+            return user
+        }catch (err) {
+            throw err
+        }
+    }
 
-    getMe = (req: any, res: express.Response) => {
-        const id: string = req.user && req.user._id;
-        UserModel.findById(id, (err, user: any) => {
-            if (err || !user) {
-                return res.status(404).json({
-                    message: 'User not found'
-                });
-            }
-            res.json(user);
-        });
-    };
+    // getMe = (req: any, res: express.Response) => {
+    //     const id: string = req.user && req.user._id;
+    //     UserModel.findById(id, (err, user: any) => {
+    //         if (err || !user) {
+    //             return res.status(404).json({
+    //                 message: 'User not found'
+    //             });
+    //         }
+    //         res.json(user);
+    //     });
+    // };
+
+    getMe = async (ctx: Koa.Context) => {
+        try {
+            const id: string = ctx.user && ctx.user._id
+            const user = UserModel.findById(id)
+            return user
+        } catch (err) {
+            throw err
+        }
+    }
+
 
     findUsers = (req: any, res: express.Response) => {
         const query: string = req.query.query;
@@ -94,7 +104,7 @@ class UserController {
                 mailer.sendMail(
                     {
                         from: 'admin@test.com',
-                        to: postData.email,
+                        to: postData.email, // TODO email for nodemail
                         subject: 'Подтверждение почты React Chat Tutorial',
                         html: `Для того, чтобы подтвердить почту, перейдите <a href="http://localhost:3000/signup/verify?hash=${obj.confirm_hash}">по этой ссылке</a>`
                     },
@@ -180,6 +190,6 @@ class UserController {
             }
         });
     };
-}
+ }
 
 export default UserController;

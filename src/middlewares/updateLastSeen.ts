@@ -9,7 +9,7 @@ declare module 'koa' {
 
 //TODO interface ctx.USER
 
-export default ( ctx: Koa.Context, next: Koa.Next ) => {
+export default async ( ctx: Koa.Context, next: Koa.Next ) => {
     if (ctx.user) {
         UserModel.findOneAndUpdate(
             { _id: ctx.user.id },
@@ -20,5 +20,5 @@ export default ( ctx: Koa.Context, next: Koa.Next ) => {
             () => {}
         );
     }
-    next();
+    await next();
 };

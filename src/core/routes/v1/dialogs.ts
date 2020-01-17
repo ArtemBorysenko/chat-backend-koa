@@ -5,16 +5,40 @@ import Koa from "koa";
 
 export default (io: socket.Server) : Router => {
     const router = new Router()
-
     const DialogController = new DialogCtrl(io)
 
-    // router.get("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
-    //     DialogController.index(ctx)
-    // })
+    router.get("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+        try {
+            const dialog = await DialogController.index(ctx)
 
-    // router.delete("/:id", DialogController.delete)
+            ctx.status = 200
+            ctx.body = dialog
+        } catch (err) {
+            throw err
+        }
+    })
 
-    // router.post("/", DialogController.create)
+    router.delete("/:id", async ( ctx: Koa.Context, next: Koa.Next ) => {
+        try {
+            const dialog = await DialogController.delete(ctx)
+
+            ctx.status = 200
+            ctx.body = dialog
+        } catch (err) {
+            throw err
+        }
+    })
+
+    router.post("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+        try {
+            const dialog = await DialogController.create(ctx)
+
+            ctx.status = 200
+            ctx.body = dialog
+        } catch (err) {
+            throw err
+        }
+    })
 
     return router
 }

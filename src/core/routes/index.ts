@@ -2,14 +2,14 @@ import Koa from "koa"
 import Router from "koa-router"
 
 import socket from "socket.io"
-import { updateLastSeen, checkAuth } from "../../middlewares";
+import { updateLastSeen, checkAuth } from "../../middlewares"
 import { dialogs, files, messages, user, auth } from "./v1"
 
 export default (io : socket.Server) : Router => {
     const router = new Router()
 
-    // router.use(checkAuth) //null
-    // router.use(updateLastSeen) //null
+    router.use(checkAuth)
+    router.use(updateLastSeen)
 
     router.get("/users",  async (ctx: Koa.Context, next: Koa.Next ) => {
         ctx.status = 200

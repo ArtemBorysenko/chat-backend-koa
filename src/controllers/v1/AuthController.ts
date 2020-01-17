@@ -1,9 +1,6 @@
-import express from 'express';
 import Koa from "koa"
 import { compareSync } from 'bcrypt';
 import socket from 'socket.io';
-import { query, validationResults, IValidationContext } from 'koa-req-validation';
-import mailer from '../../core/mailer/mailer';
 
 import {  UserModel } from '../../models';
 import { IUser } from '../../models/v1/User';
@@ -16,23 +13,6 @@ class AuthCtrl {
         this.io = io;
     }
 
-    // delete = (req: express.Request, res: express.Response) => {
-    //     const id: string = req.params.id;
-    //     UserModel.findOneAndRemove({ _id: id })
-    //         .then(user => {
-    //             if (user) {
-    //                 res.json({
-    //                     message: `User ${user.fullname} deleted`
-    //                 });
-    //             }
-    //         })
-    //         .catch(() => {
-    //             res.json({
-    //                 message: `User not found`
-    //             });
-    //         });
-    // };
-
     create = async (ctx: Koa.Context) => {
         try {
             const postData = {
@@ -41,88 +21,54 @@ class AuthCtrl {
                 password: ctx.request.body.password
             };
 
-            //TODO CONTROLLERS error handling
-            // const errors = validationResult(req);
-            //
-            // if (!errors.isEmpty()) {
-            //     return res.status(422).json({ errors: errors.array() });
-            // }
-
             const user = await new UserModel(postData).save()
             return user
             //TODO deleted mailer.sendMail
         } catch (err) {
-            ctx.throw(500, "ERROR REGISTRATION")
+            ctx.throw(500, err)
         }
     }
 
-    // verify = (req: express.Request, res: express.Response) => {
-    //     const hash = req.query.hash;
-    //
-    //     if (!hash) {
-    //         return res.status(422).json({ errors: 'Invalid hash' });
-    //     }
-    //
-    //     UserModel.findOne({ confirm_hash: hash }, (err, user) => {
-    //         if (err || !user) {
-    //             return res.status(404).json({
-    //                 status: 'error',
-    //                 message: 'Hash not found'
-    //             });
-    //         }
-    //
-    //         user.confirmed = true;
-    //         user.save(err => {
-    //             if (err) {
-    //                 return res.status(404).json({
-    //                     status: 'error',
-    //                     message: err
-    //                 });
-    //             }
-    //
-    //             res.json({
-    //                 status: 'success',
-    //                 message: 'Аккаунт успешно подтвержден!'
-    //             });
-    //         });
-    //     });
-    // };
+    verify =  async (ctx: Koa.Context) => {
+        try {
+            const hash = ctx.query.hash;//?
 
-    login = (ctx: Koa.Context) => {
+            console.log("query : ", ctx.query.hash)// TODO CONTROLLER AUTH verify
+
+            if (!hash)  ctx.throw(422, 'Invalid hash')
+
+            const user = await UserModel.findOne({ confirm_hash: hash })
+
+            if (!user) ctx.throw(404, 'Hash not found')
+
+            user.confirmed = true;
+            user.save();
+
+            return 'Аккаунт успешно подтвержден!'
+
+        } catch (err) {
+            throw await err
+        }
+    }
+
+    login = async (ctx: Koa.Context) => {
+        try {
         const postData = {
             email: ctx.request.body.email,
             password: ctx.request.body.password
         };
 
+            const user : IUser | null = await UserModel.findOne({ email: postData.email })
+            if (!user) ctx.throw(404, 'User not found')
 
-        // ???? https://ppeerttu.github.io/koa-req-validation/
-        const ctxAny : any = ctx
-        const result = validationResults(ctxAny)
+            if (!compareSync(postData.password, user.password)) ctx.throw(403, 'Incorrect password or email')
 
-        if (result.hasErrors()) {
-            ctx.throw(422, result.mapped())
+            const token = await createJWToken(user)// TODO add refreshToken
+            return token
+
+        } catch (err) {
+            throw await err
         }
-
-        // UserModel.findOne({ email: postData.email }, (err, user: IUser) => {
-        //     if (err || !user) {
-        //         return res.status(404).json({
-        //             message: 'User not found'
-        //         });
-        //     }
-        //
-        //     if (compareSync(postData.password, user.password)) {
-        //         const token = createJWToken(user);
-        //         res.json({
-        //             status: 'success',
-        //             token
-        //         });
-        //     } else {
-        //         res.status(403).json({
-        //             status: 'error',
-        //             message: 'Incorrect password or email'
-        //         });
-        //     }
-        // });
     };
 }
 

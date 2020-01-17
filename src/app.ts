@@ -31,10 +31,10 @@ function CreateApp() { // ? App ?
             // validation > routes > controllers
             await next()
         } catch (err) {
-            console.log("1")
             ctx.status = err.status || 500
-            ctx.body = err.message
-           // ctx.app.emit('error', err, ctx)
+            ctx.body = {ERROR: err,
+                message: err.message}
+            ctx.app.emit('error', err, ctx)
         }
     });
 

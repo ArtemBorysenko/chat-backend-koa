@@ -46,7 +46,7 @@ const UserSchema = new Schema(
     },
 );
 
-//TODO  date-fns differenceInMinutes
+//TODO FRONTEND date-fns differenceInMinutes
 
 // UserSchema.virtual('isOnline').get(function(this: any) {
 //     return datefns.differenceInMinutes(new Date(), this.last_seen) < 5;

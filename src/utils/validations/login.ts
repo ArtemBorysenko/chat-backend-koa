@@ -1,5 +1,4 @@
 import validator from "validator";
-import koaBody from 'koa-body'
 import Koa from 'koa';
 
 interface IValidationError {
@@ -33,12 +32,12 @@ try {
         })
     }
 
-    if (errors[0] != undefined) throw new Error
+    if (errors[0] != undefined) ctx.throw(422, errors)
 
     await next()
 
 } catch (err) {
-    ctx.throw(422, {message: errors})
+    throw await err
 }
 }
 

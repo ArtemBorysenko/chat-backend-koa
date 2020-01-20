@@ -8,7 +8,7 @@ export default async ( ctx: Koa.Context, next: Koa.Next ) => {
             ctx.path === "/auth/signup" ||
             ctx.path === "/auth/verify"
         ) {
-            return await next();
+            return await next()
         }
 
         //TODO AccessToken
@@ -22,13 +22,12 @@ export default async ( ctx: Koa.Context, next: Koa.Next ) => {
 
         verifyJWTToken(ctx.header.authorization)
             .then(async (user: any) => {
-                 ctx.state.user = user//?
+                ctx.state.user = user//?
                 await next()
             })
             .catch(err => {
-                ctx.status = 401
-                ctx.body = {message: "Invalid auth token provided."}
-            });
+                 ctx.throw(401, "Invalid auth token provided.")
+            })
     } catch (err) {
         throw err
     }

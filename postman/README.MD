@@ -1,11 +1,11 @@
-### NAME
+### CHAT
 
 ```
-Last updated -- 20.12.2019 -- Artem Borysenko
+Last updated -- 10.01.2020 -- Artem Borysenko
 
 ```
 
 ```
-Last updated -- 27.11.2019 -- Artem Borysenko
+Last updated -- 20.01.2020 -- Artem Borysenko
 
 ```

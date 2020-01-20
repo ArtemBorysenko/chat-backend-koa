@@ -7,7 +7,8 @@ import Koa from 'koa';
 
 export default (io : socket.Server) : Router => {
     const router = new Router()
-    const AuthController = new AuthCtrl(io);
+
+    const AuthController = new AuthCtrl(io)
 
     router.get("/",  async ( ctx: Koa.Context, next: Koa.Next ) => {
         ctx.status = 200

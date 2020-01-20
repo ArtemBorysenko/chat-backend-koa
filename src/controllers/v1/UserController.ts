@@ -12,30 +12,33 @@ class UserController {
 
     show = async (ctx: Koa.Context) => {
         try {
+
             const id: string = ctx.params.id // express req.params.id
             const user = await UserModel.findById(id)
 
             return user
+
         }catch (err) {
-            throw err
+            throw await err
         }
     }
 
     getMe = async (ctx: Koa.Context) => {
         try {
-            const id: string = ctx.user && ctx.user._id
-            const user = UserModel.findById(id)
+            const id: string = ctx.state.user.id
+            const user = await UserModel.findById(id)
 
             return user
-        } catch (err) {
 
-            throw err
+        } catch (err) {
+            throw await err
         }
     }
 
     findUsers = async (ctx: Koa.Context) => {
         try {
             const query: string = ctx.params.query;
+            console.log("query :", query)
             const users = await UserModel.find().or([
                 {fullname: new RegExp(query, 'i')},
                 {email: new RegExp(query, 'i')}
@@ -61,4 +64,4 @@ class UserController {
     };
  }
 
-export default UserController;
+export default UserController

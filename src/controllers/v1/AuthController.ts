@@ -5,8 +5,9 @@ import socket from 'socket.io';
 import {  UserModel } from '../../models';
 import { IUser } from '../../models/v1/User';
 import { createJWToken } from '../../utils';
+import UserController from "./UserController";
 
-class AuthCtrl {
+class AuthController {
     io: socket.Server;
 
     constructor(io: socket.Server) {
@@ -41,10 +42,10 @@ class AuthCtrl {
 
             if (!user) ctx.throw(404, 'Hash not found')
 
-            user.confirmed = true;
-            user.save();
+            user.confirmed = true
+            user.save()
 
-            return 'Аккаунт успешно подтвержден!'
+            return user
 
         } catch (err) {
             throw await err
@@ -72,4 +73,4 @@ class AuthCtrl {
     };
 }
 
-export default AuthCtrl
+export default AuthController

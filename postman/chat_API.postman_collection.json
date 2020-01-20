@@ -1,0 +1,633 @@
+{
+	"info": {
+		"_postman_id": "a9e780a3-141c-4285-984c-7f8540e524e0",
+		"name": "chat_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test3@test.io",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test23@test.io",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "Petya",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "hash",
+									"value": "$2b$10$iKl5fynw0tH5D9zcNndf1O1/t5xSvI51Ao8E5awE48/MiXVQO.UaW",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/verify?hash=$2b$10$iKl5fynw0tH5D9zcNndf1O1/t5xSvI51Ao8E5awE48/MiXVQO.UaW",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "hash",
+									"value": "$2b$10$iKl5fynw0tH5D9zcNndf1O1/t5xSvI51Ao8E5awE48/MiXVQO.UaW"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTUzMzM0Nn0.-VQu9RWsXweDB0fM4TfcT2CCyd4LGp7By7e5_Bcs1NM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test3@test.io",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTUzMzEyOX0.Wc4vYZ4dcD2ArK_zOO-yTTjiT4PsBbjGa3C9ebUS9QA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test3@test.io",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/find/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"find",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTUzMzM0Nn0.-VQu9RWsXweDB0fM4TfcT2CCyd4LGp7By7e5_Bcs1NM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test3@test.io",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/5e206f05d2c9bb50063de5ed",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"5e206f05d2c9bb50063de5ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test3@test.io",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/5e206f05d2c9bb50063de5ed",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"5e206f05d2c9bb50063de5ed"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "dialogs",
+			"item": [
+				{
+					"name": "gialogs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test21@test.io",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/dialogs/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dialogs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get gialogs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "partner",
+									"value": "5e206f05d2c9bb50063de5ed",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/dialogs/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dialogs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete gialogs",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "partner",
+									"value": "5e206f05d2c9bb50063de5ed",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/dialogs/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dialogs",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "messages",
+			"item": [
+				{
+					"name": "get messages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "partner",
+									"value": "5e206f05d2c9bb50063de5ed",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/messages/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"messages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "partner",
+									"value": "5e206f05d2c9bb50063de5ed",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/messages/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"messages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete message",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "partner",
+									"value": "5e206f05d2c9bb50063de5ed",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/messages/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"messages",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

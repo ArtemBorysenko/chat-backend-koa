@@ -25,7 +25,8 @@ class UserController {
 
     getMe = async (ctx: Koa.Context) => {
         try {
-            const id: string = ctx.state.user.id
+            const id = ctx.state.user.id
+            console.log("ID : ", id)
             const user = await UserModel.findById(id)
 
             return user

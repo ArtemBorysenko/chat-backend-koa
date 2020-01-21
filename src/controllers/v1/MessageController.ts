@@ -55,16 +55,16 @@ class MessageController {
                 dialog: ctx.request.body.dialog_id,
                 attachments: ctx.request.body.attachments,
                 user: userId,
-            };
+            }
 
             const message = new MessageModel(postData)
 
             this.updateReadedStatus(ctx, userId, ctx.request.body.dialog_id)
 
-            await message.save()
-                .then((obj: any) => {
-                    obj.populate(['dialog', 'user', 'attachments'],
-                        (err: any, message: any) => {
+            return await message.save()
+                .then( async (obj: any) => {
+                    return await obj.populate(['dialog', 'user', 'attachments'],
+                        async (err: any, message: any) => {
                             if (err) ctx.throw(500, err)
 
                             DialogModel.findOneAndUpdate(
@@ -78,7 +78,7 @@ class MessageController {
 
                             this.io.emit('SERVER:NEW_MESSAGE', message)
 
-                            return message
+                            return await message
                         });
                 })
         } catch (err) {
@@ -91,7 +91,7 @@ class MessageController {
             const id: string = ctx.query.id;
             const userId: any = ctx.state.user.id //req.user._id, //any
 
-            MessageModel.findById(id, (err, message: any) => {
+            return await MessageModel.findById(id, async (err, message: any) => {
                 if (err || !message) ctx.throw(500, err)
 
                 if (message.user.toString() === userId) {
@@ -117,11 +117,11 @@ class MessageController {
                     return 'Message deleted'
 
                 } else {
-                    return ctx.throw(403, 'Not have permission')
+                     ctx.throw(403, 'Not have permission')
                 }
-            });
+            })
         } catch (err) {
-
+            throw err
         }
     }
 }

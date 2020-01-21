@@ -16,8 +16,6 @@ class DialogController {
             // const userId = req.user._id;
             const userId = ctx.state.user.id
 
-            console.log("ctx.state.user :", ctx.state.user.id)
-
             const dialog = await DialogModel.find()
                 .or([{author: userId}, {partner: userId}])
                 .populate(['author', 'partner'])
@@ -51,24 +49,24 @@ class DialogController {
 
             const dialog = new DialogModel(postData);
 
-            await dialog.save()
-                .then((dialogObj: any) => {
+            return await dialog.save()
+                .then(async (dialogObj: any) => {
                     const message = new MessageModel({
                         text: ctx.request.body.text,
                         user: ctx.state.user.id,
                         dialog: dialogObj._id,
                     });
 
-                    message
+            return await message
                         .save()
-                        .then(() => {
+                        .then(async () => {
                             dialogObj.lastMessage = message._id;
-                            dialogObj.save().then(() => {
+                            return await dialogObj.save().then( async () => {
                                 this.io.emit('SERVER:DIALOG_CREATED', {
                                     ...postData,
                                     dialog: dialogObj,
-                                });
-                                return dialogObj
+                                })
+                                return await dialogObj
                             });
                         })
                 })

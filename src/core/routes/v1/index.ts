@@ -1,4 +1,3 @@
-// TODO routers index
 export { default as dialogs } from './dialogs';
 export { default as files } from './files';
 export { default as messages } from './messages';

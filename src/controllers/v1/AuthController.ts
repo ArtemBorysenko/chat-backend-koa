@@ -34,7 +34,7 @@ class AuthController {
         try {
             const hash = ctx.query.hash;//?
 
-            console.log("query : ", ctx.query.hash)// TODO CONTROLLER AUTH verify
+            console.log("query : ", ctx.query.hash)
 
             if (!hash)  ctx.throw(422, 'Invalid hash')
 
@@ -64,7 +64,7 @@ class AuthController {
 
             if (!compareSync(postData.password, user.password)) ctx.throw(403, 'Incorrect password or email')
 
-            const token = await createJWToken(user)// TODO add refreshToken
+            const token = await createJWToken(user) // TODO add refreshToken
             return token
 
         } catch (err) {

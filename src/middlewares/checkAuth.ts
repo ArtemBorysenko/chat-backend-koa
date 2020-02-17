@@ -34,7 +34,7 @@ export default async ( ctx: Koa.Context, next: Koa.Next ) => {
             ctx.path === "/auth/signup" ||
             ctx.path === "/auth/verify"
         ) {
-            await next()
+            return await next()
         }
 
         const user = await verifyJWTToken(ctx.header.authorization)

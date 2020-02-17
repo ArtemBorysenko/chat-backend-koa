@@ -11,7 +11,7 @@ class DialogController {
         this.io = io;
     }
 
-    index = async ( ctx: Koa.Context ) => {//TODO need test dialog?
+    index = async ( ctx: Koa.Context ) => {
         try {
             // const userId = req.user._id;
             const userId = ctx.state.user.id
@@ -79,6 +79,8 @@ class DialogController {
         try {
             const id: string = ctx.params.id;
             const dialog = await DialogModel.findOneAndRemove({_id: id})
+            await MessageModel.deleteMany({dialog: id})
+            // await MessageModel.remove({dialog: id})
 
             if (!dialog) ctx.throw(404, `Dialog not found`)
 

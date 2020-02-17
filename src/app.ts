@@ -4,7 +4,6 @@ import logger from "koa-logger"
 import json from "koa-json"
 
 import { createServer } from 'http'
-//TODO JWT
 
 import  config  from './config'
 
@@ -13,13 +12,17 @@ import index from './core/routes';
 import createSocket from './core/socket'
 import koaBody from "koa-body";
 
-function CreateApp() { // ? App ?
+// function CreateApp() { // ? App ?
     const app = new Koa()
     const router = new Router()
 
-    // TODO Socket
     const http = createServer(app.callback())
-    const io = createSocket(http)
+
+
+
+    const io = createSocket( app.listen(config.port, () => {
+        console.log("Koa started")
+    }))
 
     app.use(koaBody())
     app.use(logger())
@@ -27,8 +30,6 @@ function CreateApp() { // ? App ?
 
     router.use(async ( ctx: Koa.Context, next: Koa.Next ) => {
         try {
-            //TODO ERROR HANDLING
-            // validation > routes > controllers
             await next()
         } catch (err) {
             ctx.status = err.status || 500
@@ -66,14 +67,14 @@ function CreateApp() { // ? App ?
 
     app.use(router.allowedMethods()).use(router.routes())
 
-    return app
-}
+    // return app
+// }
 
 
-if (!module.parent) {
-    CreateApp().listen(config.port, () => {
-        console.log("Koa started")
-    })
-}
+// if (!module.parent) {
+//     app.listen(config.port, () => {
+//         console.log("Koa started")
+//     })
+// }
 
-export default CreateApp
+export default app

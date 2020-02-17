@@ -7,8 +7,6 @@ declare module 'koa' {
     }
 }
 
-//TODO interface ctx.USER
-
 export default async ( ctx: Koa.Context, next: Koa.Next ) => {
     if (ctx.user) {
         UserModel.findOneAndUpdate(

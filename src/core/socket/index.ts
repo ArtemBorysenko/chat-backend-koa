@@ -10,16 +10,6 @@ export default (http: http.Server) => {
 
             socket.emit("send_message", "string");
 
-        io.on("message", (data: any) => {
-            console.log("MESSAGE! ", JSON.parse(data.data))
-            socket.emit("io")
-        });
-
-        socket.on("message", (data: any) => {
-            console.log("MESSAGE! ", JSON.parse(data.data))
-            socket.emit("socket")
-        });
-
             socket.on("connect", (data: any) => {
                 console.log("connect", data)
             });

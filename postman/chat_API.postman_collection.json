@@ -25,7 +25,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "test3@test.io",
+									"value": "flutter1@test.io",
 									"type": "text"
 								},
 								{
@@ -174,14 +174,14 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "email",
-									"value": "test3@test.io",
+									"key": "",
+									"value": "",
 									"type": "text",
 									"disabled": true
 								},
 								{
-									"key": "password",
-									"value": "1234",
+									"key": "",
+									"value": "",
 									"type": "text",
 									"disabled": true
 								}
@@ -224,14 +224,16 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "email",
-									"value": "test3@test.io",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "password",
-									"value": "1234",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -273,14 +275,16 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "email",
-									"value": "test3@test.io",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "password",
-									"value": "1234",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -313,14 +317,16 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "email",
-									"value": "test3@test.io",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "password",
-									"value": "1234",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -356,7 +362,7 @@
 							},
 							{
 								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGE1ZTAzNWZlNDQ1MjBmYjg4Y2M2MSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoiZmx1dHRlcjFAdGVzdC5pbyIsImlhdCI6MTU4MTkzMjA0MX0.RFSGggT70iA6B18pWeC5y7KNunw4V5-R00zjD2Ry3bk",
 								"type": "text"
 							}
 						],
@@ -364,13 +370,13 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "email",
-									"value": "test21@test.io",
+									"key": "partner",
+									"value": "5e4a60d95fe44520fb88cc65",
 									"type": "text"
 								},
 								{
-									"key": "password",
-									"value": "1234",
+									"key": "text",
+									"value": "Firste message",
 									"type": "text"
 								}
 							]
@@ -404,7 +410,7 @@
 							},
 							{
 								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGE2MGQ0NWZlNDQ1MjBmYjg4Y2M2NCIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoiZmx1dHRlcjFAdGVzdC5pbyIsImlhdCI6MTU4MTkzMzk0NX0.PfJ31Ce7x7DOSNOKEcGWHYu6UigrdU2qtTeg9VTY5rM",
 								"type": "text"
 							}
 						],
@@ -412,14 +418,16 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "partner",
-									"value": "5e206f05d2c9bb50063de5ed",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "text",
-									"value": "1234",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -457,25 +465,27 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "partner",
-									"value": "5e206f05d2c9bb50063de5ed",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "text",
-									"value": "1234",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/dialogs/",
+							"raw": "{{url}}/dialogs/5e206f05d2c9bb50063de5ed",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"dialogs",
-								""
+								"5e206f05d2c9bb50063de5ed"
 							]
 						}
 					},
@@ -511,25 +521,33 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "partner",
-									"value": "5e206f05d2c9bb50063de5ed",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "text",
-									"value": "1234",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/messages/",
+							"raw": "{{url}}/messages/?dialog=5e26d06463950324d9b0c8ba",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"messages",
 								""
+							],
+							"query": [
+								{
+									"key": "dialog",
+									"value": "5e26d06463950324d9b0c8ba"
+								}
 							]
 						}
 					},
@@ -549,21 +567,27 @@
 							{
 								"key": "authorization",
 								"type": "text",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjE5NTlhMTJhMjg3MmE2NWQ4YTYwMSIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoidGVzdDNAdGVzdC5pbyIsImlhdCI6MTU3OTI2NzM3N30.qk_Weh539LjUfdTm5PXcpg6-GpmLscHZNVZ6zbySO4E"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGE2MGQ0NWZlNDQ1MjBmYjg4Y2M2NCIsIm5hbWUiOiJQZXR5YSIsImVtYWlsIjoiZmx1dHRlcjFAdGVzdC5pbyIsImlhdCI6MTU4MTkzMzI5NX0.EaIunrhzx6xJGrvqOVTwrkH3Ly5RCN6IR3BsdFMw-ro"
 							}
 						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "partner",
-									"value": "5e206f05d2c9bb50063de5ed",
+									"key": "dialog_id",
+									"value": "5e4a62f94ee5823210092353",
 									"type": "text"
 								},
 								{
 									"key": "text",
-									"value": "1234",
+									"value": "new message 4",
 									"type": "text"
+								},
+								{
+									"key": "attachments",
+									"value": "12",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -601,25 +625,33 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "partner",
-									"value": "5e206f05d2c9bb50063de5ed",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "text",
-									"value": "1234",
-									"type": "text"
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/messages/",
+							"raw": "{{url}}/messages/?id=5e26d9b13637e12ac3e6883f",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"messages",
 								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5e26d9b13637e12ac3e6883f"
+								}
 							]
 						}
 					},

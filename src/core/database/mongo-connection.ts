@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-
-mongoose.connect('mongodb://localhost:27017/chat', {
+//'mongodb+srv://admin:1234@clus-tyy5m.mongodb.net/test?retryWrites=true&w=majority'
+mongoose.connect('mongodb+srv://admin:1234@clus-tyy5m.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

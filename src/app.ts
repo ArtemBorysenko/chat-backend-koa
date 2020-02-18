@@ -1,3 +1,7 @@
+const {
+    default: sslify, // middleware factory
+    resolver: xForwardedProtoResolver // resolver needed
+} = require('koa-sslify');
 import Koa from "koa"
 import Router from "koa-router"
 import logger from "koa-logger"
@@ -24,6 +28,7 @@ import koaBody from "koa-body";
         console.log("Koa started")
     }))
 
+    app.use(sslify({ resolver: xForwardedProtoResolver }));
     app.use(koaBody())
     app.use(logger())
     // app.use(json())

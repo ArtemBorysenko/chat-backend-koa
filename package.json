@@ -40,6 +40,7 @@
     "koa-logger": "^3.2.1",
     "koa-req-validation": "^0.7.0",
     "koa-router": "^7.4.0",
+    "koa-sslify": "^4.0.3",
     "koa-validate": "^1.0.7",
     "lodash": "^4.17.15",
     "mongoose": "^5.8.6",

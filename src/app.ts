@@ -12,13 +12,10 @@ import index from './core/routes';
 import createSocket from './core/socket'
 import koaBody from "koa-body";
 
-// function CreateApp() { // ? App ?
     const app = new Koa()
     const router = new Router()
 
     const http = createServer(app.callback())
-
-
 
     const io = createSocket( app.listen(config.port, () => {
         console.log("Koa started")
@@ -26,7 +23,6 @@ import koaBody from "koa-body";
 
     app.use(koaBody())
     app.use(logger())
-    // app.use(json())
 
     router.use(async ( ctx: Koa.Context, next: Koa.Next ) => {
         try {
@@ -67,14 +63,5 @@ import koaBody from "koa-body";
 
     app.use(router.allowedMethods()).use(router.routes())
 
-    // return app
-// }
-
-
-// if (!module.parent) {
-//     app.listen(config.port, () => {
-//         console.log("Koa started")
-//     })
-// }
 
 export default app

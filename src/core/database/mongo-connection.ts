@@ -1,8 +1,18 @@
 import mongoose from 'mongoose';
+import  config  from '../../config'
 
-mongoose.connect('mongodb://localhost:27017/chat', {
+const db = process.env.MONGODB_URL;
+
+mongoose.connect(config.database.db, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    useUnifiedTopology: true
 });
+mongoose.connection.on("error", (err: any) => {
+    console.log(err);
+});
+mongoose.connection.on("connected", (err: any) => {
+    console.log("connected to db");
+});
+module.exports = mongoose;

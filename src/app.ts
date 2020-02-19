@@ -63,5 +63,4 @@ import koaBody from "koa-body";
 
     app.use(router.allowedMethods()).use(router.routes())
 
-
 export default app

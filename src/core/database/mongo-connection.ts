@@ -13,6 +13,6 @@ mongoose.connection.on("error", (err: any) => {
     console.log(err);
 });
 mongoose.connection.on("connected", (err: any) => {
-    console.log("connected to db");
+    console.log(`connected to: ${config.database.db}`);
 });
 module.exports = mongoose;

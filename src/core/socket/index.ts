@@ -15,7 +15,7 @@ export default (http: http.Server) => {
             });
 
             socket.on("connection", (data: any) => {
-                    console.log("connection", data)
+                console.log("connection", data)
             });
 
             socket.on("send_message", (data: any) => {

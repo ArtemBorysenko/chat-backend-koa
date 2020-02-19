@@ -19,4 +19,4 @@ mongod
 `npm start`
 ### API
 * Импортировать ``` postman/chat_API.postman_collection.json ``` в Postman
-
+* Heroku сервер [Ссылка](https://chat-backend-koa.herokuapp.com)

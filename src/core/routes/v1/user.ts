@@ -9,11 +9,6 @@ export default (io: socket.Server) : Router => {
 
     const UserController = new UserCtrl(io)
 
-    router.get("/user",  async  (ctx: Koa.Context, next: Koa.Next ) => {
-        ctx.status = 200
-        ctx.body = { msg: "user user!" }
-    })
-
     router.get("/me", async ( ctx: Koa.Context, next: Koa.Next ) => {
         try {
             const user = await UserController.getMe(ctx)
@@ -35,7 +30,7 @@ export default (io: socket.Server) : Router => {
             } catch (err) {
                 throw await err
             }
-        })
+    })
 
     router.get("/:id", async ( ctx: Koa.Context, next: Koa.Next ) => {
         try {

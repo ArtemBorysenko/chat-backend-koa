@@ -1,9 +1,6 @@
 import Koa from "koa"
 import Router from "koa-router"
 import logger from "koa-logger"
-import json from "koa-json"
-
-import { createServer } from 'http'
 
 import  config  from './config'
 
@@ -14,9 +11,6 @@ import koaBody from "koa-body";
 
     const app = new Koa()
     const router = new Router()
-
-    const http = createServer(app.callback())
-
     const io = createSocket( app.listen(config.port, () => {
         console.log("Koa started")
     }))

@@ -1,4 +1,3 @@
-import express from 'express';
 import socket from 'socket.io';
 
 import { DialogModel, MessageModel } from '../../models';

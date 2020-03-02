@@ -1,4 +1,3 @@
-import express from 'express';
 import socket from 'socket.io';
 
 import { MessageModel, DialogModel } from '../../models';
@@ -61,26 +60,23 @@ class MessageController {
 
             this.updateReadedStatus(ctx, userId, ctx.request.body.dialog_id)
 
-            return await message.save()
+             await message.save()
                 .then( async (obj: any) => {
-                    return await obj.populate(['dialog', 'user', 'attachments'],
-                        async (err: any, message: any) => {
-                            if (err) ctx.throw(500, err)
+                   return await obj.populate(['dialog', 'user', 'attachments']).execPopulate()})
+                .catch((err: any) => ctx.throw(500, err));
 
-                            DialogModel.findOneAndUpdate(
-                                {_id: postData.dialog},
-                                {lastMessage: message._id},
-                                {upsert: true},
-                                function (err) {
-                                    if (err) if (err) ctx.throw(500, err)
-                                },
-                            );
+            await DialogModel.findOneAndUpdate(
+                {_id: postData.dialog},
+                {lastMessage: message._id},
+                {upsert: true},
+                function (err) {
+                    if (err) if (err) ctx.throw(500, err)
+                },
+            );
 
-                            this.io.emit('SERVER:NEW_MESSAGE', message)
+            this.io.emit('SERVER:MESSAGE_NEW', message);
 
-                            return await message
-                        });
-                })
+            return message;
         } catch (err) {
             throw err
         }

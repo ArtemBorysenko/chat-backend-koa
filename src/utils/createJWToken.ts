@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import config from "../config"
-import { reduce } from 'lodash';
 
 interface ILoginData {
     _id: string

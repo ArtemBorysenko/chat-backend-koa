@@ -1,5 +1,4 @@
 import Router from "koa-router"
-import multer from "multer";
 import {UploadFileCtrl} from "../../../controllers"
 
 export default () : Router => {

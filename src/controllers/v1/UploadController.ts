@@ -1,6 +1,3 @@
-import express from "express";
-import fs from "fs";
-
 import cloudinary from "../../core/cloudinary"; //TODO cloudinary
 import { UploadFileModel } from "../../models";
 import Koa from "koa";

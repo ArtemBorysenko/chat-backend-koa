@@ -24,7 +24,7 @@ export default (io: socket.Server) : Router => {
                 const message = await MessageController.create(ctx)
 
                 ctx.status = 200
-                ctx.body = message
+                ctx.body = [message]
             } catch (err) {
                 throw await err
             }

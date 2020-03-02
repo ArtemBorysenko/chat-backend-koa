@@ -5,7 +5,6 @@ import socket from 'socket.io';
 import {  UserModel } from '../../models';
 import { IUser } from '../../models/v1/User';
 import { createJWToken } from '../../utils';
-import UserController from "./UserController";
 
 class AuthController {
     io: socket.Server;
@@ -22,7 +21,7 @@ class AuthController {
                 password: ctx.request.body.password
             };
 
-            const user = await new UserModel(postData).save()
+            const user = await new UserModel(postData).save();
             return user
             //TODO deleted mailer.sendMail
         } catch (err) {

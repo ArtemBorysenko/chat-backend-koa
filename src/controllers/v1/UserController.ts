@@ -26,7 +26,6 @@ class UserController {
     getMe = async (ctx: Koa.Context) => {
         try {
             const id = ctx.state.user.id
-            console.log("ID : ", id)
             const user = await UserModel.findById(id)
 
             return user
@@ -39,7 +38,6 @@ class UserController {
     findUsers = async (ctx: Koa.Context) => {
         try {
             const query: string = ctx.params.query;
-            console.log("query :", query)
             const users = await UserModel.find().or([
                 {fullname: new RegExp(query, 'i')},
                 {email: new RegExp(query, 'i')}

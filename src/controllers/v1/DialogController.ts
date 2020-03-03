@@ -12,7 +12,6 @@ class DialogController {
 
     index = async ( ctx: Koa.Context ) => {
         try {
-            // const userId = req.user._id;
             const userId = ctx.state.user.id
 
             const dialog = await DialogModel.find()
@@ -41,10 +40,12 @@ class DialogController {
                 partner: ctx.request.body.partner,
             }
 
-            if (await DialogModel.findOne({
+            const dialogIsHave = await DialogModel.findOne({
                 author: ctx.state.user.id,
                 partner: ctx.request.body.partner,
-            })) ctx.throw(403, 'Такой диалог уже есть')
+            }).populate(['author', 'partner']) //ctx.throw(403, 'Такой диалог уже есть')
+
+            if(dialogIsHave) return dialogIsHave;
 
             const dialog = new DialogModel(postData);
 

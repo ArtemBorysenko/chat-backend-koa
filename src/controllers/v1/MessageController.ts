@@ -29,8 +29,18 @@ class MessageController {
 
     index = async (ctx: Koa.Context) => {
         try {
-            const dialogId: string = ctx.query.dialog
-            const userId: any = ctx.state.user.id //req.user._id, // any
+
+            const dialogIsHave = await DialogModel.findOne({
+                author: ctx.state.user.id,
+                partner: ctx.query.partner,
+            }).then((obj: any) => {
+                return obj._id;
+            }).catch((err: any) => {
+                ctx.throw(404, 'User not found')
+            })
+
+            const dialogId: string = dialogIsHave
+            const userId: string = ctx.state.user.id
 
             this.updateReadedStatus(ctx, userId, dialogId)
 
@@ -74,7 +84,7 @@ class MessageController {
                 },
             );
 
-            this.io.emit('SERVER:MESSAGE_NEW', message);
+            this.io.emit('SERVER:MESSAGE_NEW', JSON.stringify(message));
 
             return message;
         } catch (err) {

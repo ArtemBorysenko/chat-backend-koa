@@ -26,7 +26,7 @@ export default (io: socket.Server) : Router => {
             try {
                 const user = await UserController.findUsers(ctx)
                 ctx.status = 200
-                ctx.body = {user}
+                ctx.body = user
             } catch (err) {
                 throw await err
             }

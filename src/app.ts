@@ -31,7 +31,7 @@ import koaBody from "koa-body";
 
     router.get("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
         ctx.status = 200
-        ctx.body = { msg: "Hello world!" }
+        ctx.body = { version: "0.2" }
     })
 
     router.get("/echo", async ( ctx: Koa.Context, next: Koa.Next ) => {

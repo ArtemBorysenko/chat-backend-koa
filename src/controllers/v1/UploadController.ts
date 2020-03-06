@@ -3,7 +3,7 @@ import { UploadFileModel } from "../../models";
 import Koa from "koa";
 
 class UserController {
-    create = async ( ctx: Koa.Context ) => {
+    create = async ( ctx: Koa.DefaultContext ) => {
         try {
             const userId = ctx.state.user.id //req.user._id,
             const file: any = ctx.state.file // TODO req.file

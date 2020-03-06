@@ -54,10 +54,10 @@ export default (http: http.Server) => {
             user: "string",
         };
 
-        // socket.emit("SERVER:MESSAGE_NEW", message);
+        // socket.emit("SERVER:MESSAGE_NEW", messages);
         socket.on("USER:MESSAGE_NEW", (message: any) => {
             // MessageController.create(userId, text, dialog_id)
-            console.log("message :", message)
+            console.log("messages :", message)
         });
 
         socket.emit("SERVER:MESSAGE_DELETE", message);

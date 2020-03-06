@@ -1,12 +1,12 @@
 import { verifyJWTToken } from "../utils";
 import Koa from "koa";
 
-export default async ( ctx: Koa.Context, next: Koa.Next ) => {
+export default async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
     try {
         if (
-            ctx.path === "/auth/signin" ||
-            ctx.path === "/auth/signup" ||
-            ctx.path === "/auth/verify"
+            ctx.path === "/api/v1/auth/signin" ||
+            ctx.path === "/api/v1/auth/signup" ||
+            ctx.path === "/api/v1/auth/verify"
         ) {
             return await next()
         }

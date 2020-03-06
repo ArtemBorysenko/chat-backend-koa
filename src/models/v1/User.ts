@@ -70,4 +70,3 @@ UserSchema.pre('save', async function(next : any) { // Mongoose middleware
 const UserModel = mongoose.model<IUser>('User', UserSchema);
 
 export default UserModel;
-

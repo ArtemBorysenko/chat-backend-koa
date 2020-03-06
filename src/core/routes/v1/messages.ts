@@ -8,7 +8,7 @@ export default (io: socket.Server) : Router => {
 
     const MessageController = new MessageCtrl(io)
 
-    router.get("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const message = await MessageController.index(ctx)
 
@@ -19,7 +19,18 @@ export default (io: socket.Server) : Router => {
         }
     })
 
-    router.post("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/v2/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
+        try {
+            const message = await MessageController.indexPage(ctx)
+
+            ctx.status = 200
+            ctx.body = message
+        } catch (err) {
+            throw await err
+        }
+    })
+
+    router.post("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
             try {
                 const message = await MessageController.create(ctx)
 
@@ -30,7 +41,7 @@ export default (io: socket.Server) : Router => {
             }
         })
 
-    router.delete("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.delete("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
                 try {
                     const message = await MessageController.delete(ctx)
 

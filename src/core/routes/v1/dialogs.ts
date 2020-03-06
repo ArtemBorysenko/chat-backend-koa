@@ -7,7 +7,7 @@ export default (io: socket.Server) : Router => {
     const router = new Router()
     const DialogController = new DialogCtrl(io)
 
-    router.get("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const dialog = await DialogController.index(ctx)
 
@@ -18,7 +18,7 @@ export default (io: socket.Server) : Router => {
         }
     })
 
-    router.delete("/:id", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.delete("/:id", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const dialog = await DialogController.delete(ctx)
 
@@ -29,7 +29,7 @@ export default (io: socket.Server) : Router => {
         }
     })
 
-    router.post("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.post("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const dialog = await DialogController.create(ctx)
 

@@ -9,7 +9,7 @@ export default (io: socket.Server) : Router => {
 
     const UserController = new UserCtrl(io)
 
-    router.get("/me", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/me", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const user = await UserController.getMe(ctx)
 
@@ -22,7 +22,7 @@ export default (io: socket.Server) : Router => {
         }
     })
 
-    router.get("/find", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/find", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
             try {
                 const user = await UserController.findUsers(ctx)
                 ctx.status = 200
@@ -32,7 +32,7 @@ export default (io: socket.Server) : Router => {
             }
     })
 
-    router.get("/:id", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/:id", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const user = await UserController.show(ctx)
 
@@ -45,7 +45,7 @@ export default (io: socket.Server) : Router => {
         }
     })
 
-     router.delete("/:id", async ( ctx: Koa.Context, next: Koa.Next ) => {
+     router.delete("/:id", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
          try {
              const user = await UserController.delete(ctx)
              ctx.status = 200

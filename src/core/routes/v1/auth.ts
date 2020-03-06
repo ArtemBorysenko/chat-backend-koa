@@ -10,12 +10,12 @@ export default (io : socket.Server) : Router => {
 
     const AuthController = new AuthCtrl(io)
 
-    router.get("/",  async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/",  async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         ctx.status = 200
         ctx.body = { msg: "auth!" }
     })
 
-    router.post("/signin", loginValidation, async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.post("/signin", loginValidation, async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const token = await AuthController.login(ctx)
 
@@ -26,7 +26,7 @@ export default (io : socket.Server) : Router => {
         }
      })
 
-    router.post("/signup", registerValidation, async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.post("/signup", registerValidation, async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
        try {
            const user = await AuthController.create(ctx)
 
@@ -37,7 +37,7 @@ export default (io : socket.Server) : Router => {
        }
     })
 
-    router.get("/verify", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/verify", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const verify = await AuthController.verify(ctx)
 

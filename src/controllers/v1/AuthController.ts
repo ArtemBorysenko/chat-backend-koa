@@ -13,7 +13,7 @@ class AuthController {
         this.io = io;
     }
 
-    create = async (ctx: Koa.Context) => {
+    create = async (ctx: Koa.DefaultContext) => {
         try {
             const postData = {
                 email: ctx.request.body.email,
@@ -29,7 +29,7 @@ class AuthController {
         }
     }
 
-    verify =  async (ctx: Koa.Context) => {
+    verify =  async (ctx: Koa.DefaultContext) => {
         try {
             const hash = ctx.query.hash;//?
 
@@ -37,7 +37,7 @@ class AuthController {
 
             if (!hash)  ctx.throw(422, 'Invalid hash')
 
-            const user = await UserModel.findOne({ confirm_hash: hash })
+            const user : any = await UserModel.findOne({ confirm_hash: hash })
 
             if (!user) ctx.throw(404, 'Hash not found')
 
@@ -51,14 +51,14 @@ class AuthController {
         }
     }
 
-    login = async (ctx: Koa.Context) => {
+    login = async (ctx: Koa.DefaultContext) => {
         try {
         const postData = {
             email: ctx.request.body.email,
             password: ctx.request.body.password
         };
 
-            const user : IUser | null = await UserModel.findOne({ email: postData.email })
+            const user : any = await UserModel.findOne({ email: postData.email })
             if (!user) ctx.throw(404, 'User not found')
 
             if (!compareSync(postData.password, user.password)) ctx.throw(403, 'Incorrect password or email')

@@ -36,11 +36,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/auth/signin",
+							"raw": "{{url}}/api/v1/auth/signin",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"auth",
 								"signin"
 							]
@@ -81,11 +83,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/auth/signup",
+							"raw": "{{url}}/api/v1/auth/signup",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"auth",
 								"signup"
 							]
@@ -126,11 +130,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/auth/verify?hash=$2b$10$iKl5fynw0tH5D9zcNndf1O1/t5xSvI51Ao8E5awE48/MiXVQO.UaW",
+							"raw": "{{url}}/api/v1/auth/verify?hash=$2b$10$iKl5fynw0tH5D9zcNndf1O1/t5xSvI51Ao8E5awE48/MiXVQO.UaW",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"auth",
 								"verify"
 							],
@@ -188,11 +194,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/user/me",
+							"raw": "{{url}}/api/v1/user/me",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"user",
 								"me"
 							]
@@ -238,11 +246,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/user/find/",
+							"raw": "{{url}}/api/v1/user/find/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"user",
 								"find",
 								""
@@ -289,11 +299,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/user/5e206f05d2c9bb50063de5ed",
+							"raw": "{{url}}/api/v1/user/5e206f05d2c9bb50063de5ed",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"user",
 								"5e206f05d2c9bb50063de5ed"
 							]
@@ -331,11 +343,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/user/5e206f05d2c9bb50063de5ed",
+							"raw": "{{url}}/api/v1/user/5e206f05d2c9bb50063de5ed",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"user",
 								"5e206f05d2c9bb50063de5ed"
 							]
@@ -357,13 +371,13 @@
 							{
 								"key": "Content-Type",
 								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
 							},
 							{
 								"key": "authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGJmYTc1YjExZWVmMDAxN2NjNWM1NCIsIm5hbWUiOiJIZXJva3UiLCJlbWFpbCI6Imhlcm9rdVRFU1RAdGVzdC5pbyIsImlhdCI6MTU4MjAzNzYyNX0.9nK5nngIy_MiwszPvNHNJ4JjDRKvxR0n-Vw6AZacjx0",
-								"type": "text"
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGJmYTc1YjExZWVmMDAxN2NjNWM1NCIsIm5hbWUiOiJIZXJva3UiLCJlbWFpbCI6Imhlcm9rdVRFU1RAdGVzdC5pbyIsImlhdCI6MTU4MjAzNzYyNX0.9nK5nngIy_MiwszPvNHNJ4JjDRKvxR0n-Vw6AZacjx0"
 							}
 						],
 						"body": {
@@ -382,11 +396,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/dialogs/",
+							"raw": "{{url}}/api/v1/dialogs/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"dialogs",
 								""
 							]
@@ -432,11 +448,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/dialogs/",
+							"raw": "{{url}}/api/v1/dialogs/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"dialogs",
 								""
 							]
@@ -479,11 +497,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/dialogs/5e206f05d2c9bb50063de5ed",
+							"raw": "{{url}}/api/v1/dialogs/5e206f05d2c9bb50063de5ed",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"dialogs",
 								"5e206f05d2c9bb50063de5ed"
 							]
@@ -514,39 +534,31 @@
 							{
 								"key": "authorization",
 								"type": "text",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGJmYTc1YjExZWVmMDAxN2NjNWM1NCIsIm5hbWUiOiJIZXJva3UiLCJlbWFpbCI6Imhlcm9rdVRFU1RAdGVzdC5pbyIsImlhdCI6MTU4MjAzNzYyNX0.9nK5nngIy_MiwszPvNHNJ4JjDRKvxR0n-Vw6AZacjx0"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGJmYTc1YjExZWVmMDAxN2NjNWM1NCIsIm5hbWUiOiJIZXJva3UiLCJlbWFpbCI6Imhlcm9rdVRFU1RAdGVzdC5pbyIsImlhdCI6MTU4MzQ4ODIwNn0.0501Pz1X6u6I9U1VZo-3a65OtIyx-VmHbJMeIc6xylI"
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								}
-							]
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    launches{\n        id\n        mission_name\n    }\n}",
+								"variables": ""
+							}
 						},
 						"url": {
-							"raw": "{{url}}/messages/?dialog=5e4bfb52b11eef0017cc5c58",
+							"raw": "{{url}}/api/v1/messages/?partner=5e4bfaa9b11eef0017cc5c55",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"messages",
 								""
 							],
 							"query": [
 								{
-									"key": "dialog",
-									"value": "5e4bfb52b11eef0017cc5c58"
+									"key": "partner",
+									"value": "5e4bfaa9b11eef0017cc5c55"
 								}
 							]
 						}
@@ -555,8 +567,11 @@
 				},
 				{
 					"name": "create message",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -567,7 +582,7 @@
 							{
 								"key": "authorization",
 								"type": "text",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGJmYTc1YjExZWVmMDAxN2NjNWM1NCIsIm5hbWUiOiJIZXJva3UiLCJlbWFpbCI6Imhlcm9rdVRFU1RAdGVzdC5pbyIsImlhdCI6MTU4MjAzNzYyNX0.9nK5nngIy_MiwszPvNHNJ4JjDRKvxR0n-Vw6AZacjx0"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGJmYTc1YjExZWVmMDAxN2NjNWM1NCIsIm5hbWUiOiJIZXJva3UiLCJlbWFpbCI6Imhlcm9rdVRFU1RAdGVzdC5pbyIsImlhdCI6MTU4MzE0MTA2NH0.sLo2eIxLZxf6VQqmmXKlF41shVu8g1Xv3fxScFTtguU"
 							}
 						],
 						"body": {
@@ -575,12 +590,12 @@
 							"urlencoded": [
 								{
 									"key": "dialog_id",
-									"value": "5e4a62f94ee5823210092353",
+									"value": "5e4bfb28b11eef0017cc5c56",
 									"type": "text"
 								},
 								{
 									"key": "text",
-									"value": "new message 4",
+									"value": "new message 17",
 									"type": "text"
 								},
 								{
@@ -592,11 +607,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/messages/",
+							"raw": "{{url}}/api/v1/messages/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"messages",
 								""
 							]
@@ -639,11 +656,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/messages/?id=5e26d9b13637e12ac3e6883f",
+							"raw": "{{url}}/api/v1/messages/?id=5e26d9b13637e12ac3e6883f",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"messages",
 								""
 							],
@@ -651,6 +670,58 @@
 								{
 									"key": "id",
 									"value": "5e26d9b13637e12ac3e6883f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get 10 messages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNGJmYTc1YjExZWVmMDAxN2NjNWM1NCIsIm5hbWUiOiJIZXJva3UiLCJlbWFpbCI6Imhlcm9rdVRFU1RAdGVzdC5pbyIsImlhdCI6MTU4MzQ4ODIwNn0.0501Pz1X6u6I9U1VZo-3a65OtIyx-VmHbJMeIc6xylI"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    launches{\n        id\n        mission_name\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/messages/?page=1&partner=5e4bfaa9b11eef0017cc5c55",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"messages",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "partner",
+									"value": "5e4bfaa9b11eef0017cc5c55"
 								}
 							]
 						}
@@ -664,7 +735,7 @@
 			"name": "home",
 			"item": [
 				{
-					"name": "hello world",
+					"name": "version",
 					"request": {
 						"method": "GET",
 						"header": [],

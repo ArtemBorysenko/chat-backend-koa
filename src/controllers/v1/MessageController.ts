@@ -10,7 +10,7 @@ class MessageController {
         this.io = io
     }
 
-    updateReadedStatus = async (ctx: Koa.Context, userId: string, dialogId: string) => {
+    updateReadedStatus = async (ctx: Koa.DefaultContext, userId: string, dialogId: string) => {
         try {
             const message = await MessageModel.updateMany(
                 {dialog: dialogId, user: {$ne: userId}},
@@ -27,7 +27,7 @@ class MessageController {
         }
     };
 
-    index = async (ctx: Koa.Context) => {
+    index = async (ctx: Koa.DefaultContext) => {
         try {
 
             const dialogIsHave = await DialogModel.findOne({
@@ -45,6 +45,11 @@ class MessageController {
             this.updateReadedStatus(ctx, userId, dialogId)
 
             const message = await MessageModel.find({dialog: dialogId})
+                .sort({createdAt: -1})
+                // .exec(function(err,data){
+                //     console.log(data)
+                //     return data;
+                // });
                 .populate(['dialog', 'user', 'attachments'])
 
             if (!message) ctx.throw(404, 'Messages not found')
@@ -55,7 +60,45 @@ class MessageController {
         }
     }
 
-    create = async (ctx: Koa.Context) => {
+    indexPage = async (ctx: Koa.DefaultContext) => {
+        try {
+
+            const perPage = 10
+            const page = 0 || ctx.query.page
+
+            const dialogIsHave = await DialogModel.findOne({
+                author: ctx.state.user.id,
+                partner: ctx.query.partner,
+            }).then((obj: any) => {
+                return obj._id;
+            }).catch((err: any) => {
+                ctx.throw(404, 'User not found')
+            })
+
+            const dialogId: string = dialogIsHave
+            const userId: string = ctx.state.user.id
+
+            this.updateReadedStatus(ctx, userId, dialogId)
+
+            const message = await MessageModel.find({dialog: dialogId})
+                .sort({createdAt: -1})
+                .limit(perPage)
+                .skip(perPage * page)
+                // .exec(function(err,data){
+                //     console.log(data)
+                //     return data;
+                // });
+                .populate(['dialog', 'user', 'attachments'])
+
+            if (!message) ctx.throw(404, 'Messages not found')
+
+            return message
+        } catch (err) {
+            throw err
+        }
+    }
+
+    create = async (ctx: Koa.DefaultContext) => {
         try {
             const userId = ctx.state.user.id
 
@@ -92,7 +135,7 @@ class MessageController {
         }
     }
 
-    delete = async (ctx: Koa.Context) => {
+    delete = async (ctx: Koa.DefaultContext) => {
         try {
             const id: string = ctx.query.id;
             const userId: any = ctx.state.user.id //req.user._id, //any

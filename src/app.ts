@@ -18,7 +18,7 @@ import koaBody from "koa-body";
     app.use(koaBody())
     app.use(logger())
 
-    router.use(async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.use(async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             await next()
         } catch (err) {
@@ -29,22 +29,22 @@ import koaBody from "koa-body";
         }
     });
 
-    router.get("/", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         ctx.status = 200
-        ctx.body = { version: "0.2" }
+        ctx.body = { version: "0.3" }
     })
 
-    router.get("/echo", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/echo", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         ctx.status = 200
         ctx.body = { Server: "Online" }
     })
 
-    router.get("/status", async ( ctx: Koa.Context, next: Koa.Next ) => {
+    router.get("/status", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         ctx.status = 200
         ctx.body = { Status: "Online" } // ?
     })
 
-    router.use("", index(io).routes())
+    router.use("/api", index(io).routes())
 
     app.on('error', (err, ctx) => {
         /* centralized error handling:

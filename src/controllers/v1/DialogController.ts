@@ -10,7 +10,7 @@ class DialogController {
         this.io = io;
     }
 
-    index = async ( ctx: Koa.Context ) => {
+    index = async ( ctx: Koa.DefaultContext ) => {
         try {
             const userId = ctx.state.user.id
 
@@ -33,7 +33,7 @@ class DialogController {
         }
     };
 
-    create = async ( ctx: Koa.Context ) => {
+    create = async ( ctx: Koa.DefaultContext ) => {
         try {
             const postData = {
                 author: ctx.state.user.id,
@@ -75,7 +75,7 @@ class DialogController {
         }
     }
 
-    delete = async ( ctx: Koa.Context ) => {
+    delete = async ( ctx: Koa.DefaultContext ) => {
         try {
             const id: string = ctx.params.id;
             const dialog = await DialogModel.findOneAndRemove({_id: id})

@@ -10,7 +10,7 @@ class UserController {
         this.io = io;
     }
 
-    show = async (ctx: Koa.Context) => {
+    show = async (ctx: Koa.DefaultContext) => {
         try {
 
             const id: string = ctx.params.id // express req.params.id
@@ -23,7 +23,7 @@ class UserController {
         }
     }
 
-    getMe = async (ctx: Koa.Context) => {
+    getMe = async (ctx: Koa.DefaultContext) => {
         try {
             const id = ctx.state.user.id
             const user = await UserModel.findById(id)
@@ -35,7 +35,7 @@ class UserController {
         }
     }
 
-    findUsers = async (ctx: Koa.Context) => {
+    findUsers = async (ctx: Koa.DefaultContext) => {
         try {
             const query: string = ctx.params.query;
             const users = await UserModel.find().or([
@@ -50,7 +50,7 @@ class UserController {
         }
     }
 
-    delete = async (ctx: Koa.Context) => {
+    delete = async (ctx: Koa.DefaultContext) => {
         try {
             const id: string = ctx.params.id;
             const user : any = await UserModel.findOneAndRemove({_id: id})

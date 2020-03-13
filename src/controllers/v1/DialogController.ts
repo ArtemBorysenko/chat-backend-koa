@@ -33,6 +33,36 @@ class DialogController {
         }
     };
 
+    indexPage = async ( ctx: Koa.DefaultContext ) => {
+        try {
+
+            const perPage = 10
+            const page = 0 || ctx.query.page
+
+            const userId = ctx.state.user.id
+
+            const dialog = await DialogModel.find()
+                .sort({createdAt: -1})
+                .limit(perPage)
+                .skip(perPage * page)
+                .or([{author: userId}, {partner: userId}])
+                .populate(['author', 'partner'])
+                .populate({
+                    path: 'lastMessage',
+                    populate: {
+                        path: 'user',
+                    },
+                })
+
+            if (!dialog) return ctx.throw(404, 'Dialogs not found')
+
+            return dialog
+
+        } catch (err) {
+            throw err
+        }
+    };
+
     create = async ( ctx: Koa.DefaultContext ) => {
         try {
             const postData = {

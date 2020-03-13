@@ -19,7 +19,7 @@ export default (io: socket.Server) : Router => {
         }
     })
 
-    router.get("/v2/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
+    router.get("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
         try {
             const message = await MessageController.indexPage(ctx)
 
@@ -33,6 +33,8 @@ export default (io: socket.Server) : Router => {
     router.post("/", async ( ctx: Koa.DefaultContext, next: Koa.Next ) => {
             try {
                 const message = await MessageController.create(ctx)
+
+                io.emit('SERVER:MESSAGE_NEW', JSON.stringify(message));
 
                 ctx.status = 200
                 ctx.body = [message]

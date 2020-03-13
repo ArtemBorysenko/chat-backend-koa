@@ -4,7 +4,8 @@ import { MessageModel, DialogModel } from '../../models';
 import Koa from "koa";
 
 class MessageController {
-    io: socket.Server
+    io: any
+    myCount: number =0;
 
     constructor(io: socket.Server) {
         this.io = io
@@ -46,10 +47,6 @@ class MessageController {
 
             const message = await MessageModel.find({dialog: dialogId})
                 .sort({createdAt: -1})
-                // .exec(function(err,data){
-                //     console.log(data)
-                //     return data;
-                // });
                 .populate(['dialog', 'user', 'attachments'])
 
             if (!message) ctx.throw(404, 'Messages not found')
@@ -100,6 +97,9 @@ class MessageController {
 
     create = async (ctx: Koa.DefaultContext) => {
         try {
+            let localCount: number =0;
+
+
             const userId = ctx.state.user.id
 
             const postData = {
@@ -126,8 +126,15 @@ class MessageController {
                     if (err) if (err) ctx.throw(500, err)
                 },
             );
+            // setTimeout(() => {
+            //     this.myCount++;
+            //     localCount++;
+            //     console.log(`Socket controller ${this.myCount}`)
+            //     console.log(`Socket localCount ${localCount}`)
+            //     // this.io.to(this.io.id).emit('SERVER:MESSAGE_NEW', JSON.stringify(message));
+            //     this.io.emit('SERVER:MESSAGE_NEW', JSON.stringify(message));
+            // }, 1000)
 
-            this.io.emit('SERVER:MESSAGE_NEW', JSON.stringify(message));
 
             return message;
         } catch (err) {

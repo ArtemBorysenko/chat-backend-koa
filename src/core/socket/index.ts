@@ -6,7 +6,7 @@ export default (http: http.Server) => {
     const io = listen(http);
 
     io.on("connection", function(socket: any) {
-        console.log("Connection")
+        console.log(`Connection ${socket.id}`)
 
         interface IUser {
             id: string;

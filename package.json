@@ -33,7 +33,7 @@
     "@types/passport": "^1.0.2",
     "@types/socket.io": "^2.1.4",
     "@types/validator": "^12.0.1",
-    "apollo-server-koa": "^2.11.0",
+    "apollo-server-koa": "^2.14.2",
     "bcrypt": "^3.0.8",
     "cloudinary": "^1.18.1",
     "date-fns": "^2.9.0",
